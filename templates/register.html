@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block style %}
+<script>
+    var check = function() {
+  if (document.getElementById('pss1').value ==
+    document.getElementById('pss2').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+</script>
+ <link rel="stylesheet" href="{% static 'css/formstyle.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container1">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card1 ">
+                {% for message in messages %}
+	                             <div class="alert alert-danger">   {{message}}</div>
+                            {% endfor %}
+                <form method="post" class="box">
+                    {% csrf_token %}
+                    <h1>Signup</h1>
+                    <p class="text-muted"> Please Signup and Explore!</p>
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="email" name="email" placeholder="Email">
+                    <input type="password" id="pss1" name="pass1" placeholder="Password" required>
+                    <input type="password" id="pss2" name="pass2" placeholder="Confirm Password" required onkeyup="check();">
+                    <span id='message'></span>
+                    <input type="submit" name="" value="Signup" href="#">
+                    <div class="col-md-12">
+                        <ul class="social-network social-circle">
+                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

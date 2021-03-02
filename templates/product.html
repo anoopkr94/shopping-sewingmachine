@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}home{% endblock %}
+{% load static %}
+{% block body %}
+      <!-- end header -->
+       <div class="brand_color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>our product</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+      <!-- our product -->
+      <div class="product">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="title">
+
+                     <span>We package the products with best services to make you a happy customer.</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="product-bg">
+         <div class="product-bg-white">
+         <div class="container">
+            <div class="row">
+               {% for item in object_list %}
+               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                  <a href="{{item.get_absolutep_url}}">
+                      <div class="product-box">
+                     <i><img src="{{item.image.url}}" style="height:230px"/></i>
+                     <h3>{{item.name}}</h3>
+                     <span>${{item.price}}</span>
+                  </div></a>
+               </div>
+               {% endfor %}
+
+               </div>
+            </div>
+         </div>
+         
+  {% endblock %}

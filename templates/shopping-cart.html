@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text product-more">
+                        <a href="../home"><i class="fa fa-home"></i> Home</a>
+                        <a href="../product.html">Shop</a>
+                        <span>Shopping Cart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section Begin -->
+
+    <!-- Shopping Cart Section Begin -->
+{% for message in messages %}
+    <div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">   {{message}}
+    <button class="close" aria-label="Close" type="button" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+    </div>
+{% endfor %}
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table border-success">
+                        <table border="5px">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Delete<i class="ti-close"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in items %}
+                                <tr>
+
+                                    <td class="cart-pic first-row"><img src="{{i.item.image.url}}" width="100" height="150" alt=""></td>
+                                    <td class="cart-title first-row">
+                                        <a href="{{i.item.get_absolutep_url}}"><h5>{{i.item.name}}</h5></a>
+                                    </td>
+                                    <td class="p-price first-row">{{i.item.price}}</td>
+                                    <td class="qua-col first-row">
+                                        <div class="quantity">
+
+                                            <a href="{{i.item.get_remove_cartitem_qty_url}}"><i class="fa fa-minus mr-2"></i></a>
+                                                {{i.quantity}}
+                                            <a href="{{i.item.get_addtocart_url}}"><i class="fa fa-plus ml-2"></i></a>
+
+                                        </div>
+                                    </td>
+                                    <td class="total-price first-row">{{ i.get_total_item_price}}</td>
+                                    <td class="close-td first-row"><a href="{{i.item.get_deletecartitem_url}}"> delete<i class="fa fa-trash"></i></a></td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="cart-buttons">
+                                <a href="../shop" class="primary-btn">Continue shopping</a>
+                            </div>
+                            <div class="discount-coupon">
+                                <h6>Discount Codes</h6>
+                                <form action="#" class="coupon-form">
+                                    <input type="text" placeholder="Enter your codes">
+                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 offset-lg-4">
+                            <div class="proceed-checkout">
+                                <ul>
+                                    <li class="subtotal">Subtotal <span>₹{{gt}}</span></li>
+                                    <li class="cart-total">Total <span>₹{{gt}}</span></li>
+                                </ul>
+                                <a href="../orders/checkout" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+{% endblock %}

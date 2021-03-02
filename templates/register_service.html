@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}contact{% endblock %}
+{% load static %}
+{% block body %}
+<div class="brand_color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Register a Service</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- register service -->
+<br>
+    <div class="register">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <form class="main_form" action="../register_service" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <input class="form-control" placeholder="Your name" type="text" name="name">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <input class="form-control" placeholder="Email" type="text" name="email">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <input class="form-control" placeholder="Phone" type="text" name="phone">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <input class="form-control" placeholder="Your Landmark" type="text" name="landmark">
+                            </div>
+                            <div class="col-md-12">
+                                <textarea class="textarea" placeholder="address" name="address"></textarea>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <input class="form-control" placeholder="Machine name" type="text" name="machine_name">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <input class="form-control" placeholder="Machine Model" type="text" name="machine_model">
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" placeholder="Machine Complaint Shown" type="text" name="machine_Complaint">
+                            </div>
+
+                            <div class=" col-md-12">
+                                <button class="send">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+    <!-- end contact -->
+{% endblock %}

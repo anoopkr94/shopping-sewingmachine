@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+ <link rel="stylesheet" href="{% static 'css/formstyle.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container1">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card1 ">
+                <form method="post" class="box">
+                    {% for message in messages %}
+	                                <div class="alert alert-danger">   {{message}}</div>
+	                            {% endfor %}
+                    {% csrf_token %}
+                    <h1>Login</h1>
+                    <p class="text-muted"> Please enter your username and password!</p>
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <a class="forgot text-muted" href="#">Forgot password?</a>
+                    <input type="submit" name="" value="Login" href="#">
+                    <div class="col-md-12">
+                        <ul class="social-network social-circle">
+                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
